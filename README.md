@@ -5,6 +5,7 @@ Installation:
 
 - Install [Node.js](https://nodejs.org/en/download/)
 - git clone https://github.com/linkret/CrosseyCircley.git
+- cd CrosseyCircley
 - npm install
 - node index.js
 - Connect to the game on http://localhost:8000 from your browser.
