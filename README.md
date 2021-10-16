@@ -1,5 +1,5 @@
 # CrosseyCircley
-Browser-based implementation of Tic-tac-toe, made with on Node.js/Express/EJS
+Browser-based implementation of Tic-tac-toe, made with Node.js/Express/EJS
 
 Some pictures:
 
