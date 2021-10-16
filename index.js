@@ -10,7 +10,6 @@ game_data = {};
 
 app.get('/game', (req, res) => {
 	var q = req.query;
-	console.log(q);
 	var data = Object.create(game_data[q.game]);
 	data.game = q.game;
 	data.player = q.player;
@@ -19,8 +18,6 @@ app.get('/game', (req, res) => {
 
 app.get('/move', (req, res) => {
 	var q = req.query;
-	console.log(q);
-	console.log(game_data[q.game]);
 	var brd = game_data[q.game].board;
 	
 	if (game_data[q.game].won == -1 && game_data[q.game].turn == q.player) {
