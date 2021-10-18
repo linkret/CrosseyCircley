@@ -19,6 +19,7 @@ body {
   margin: 10px;
   border: none;
   font-family: monospace;
+	cursor: pointer;
 }
 
 .btn-new-game {
@@ -28,10 +29,25 @@ body {
   font-size: 18px;
 }
 
+.btn-new-game:hover {
+	background-color: #81b31d;
+}
+
+.btn-new-game:active {
+	background-color: #76a31c;
+}
+
 .btn-join-game {
   height: 50px;
   width: 260px;
   background-color: #6a6a6a;
   color: white;
   font-size: 14px;
+}
+.btn-join-game:hover {
+	background-color: #5c5c5c;
+}
+
+.btn-join-game:active {
+	background-color: #4c4c4c;
 }
