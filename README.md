@@ -1,5 +1,7 @@
 # CrosseyCircley
-Browser-based implementation of Tic-tac-toe, made with Node.js/Express/EJS
+Browser-based implementation of Tic-Tac-Toe, made with Node.js / Express / EJS
+
+Part of hacktoberfest 2021! 
 
 Installation:
 
@@ -12,18 +14,16 @@ Installation:
 
 Some pictures:
 
-The game page, game.ejs:
+The game page, game.ejs. Click on cells to mark them:
 
-![game1](https://user-images.githubusercontent.com/38794784/137586958-11b41989-6744-4e09-a38f-e8e5305b1935.PNG)
+![win](https://user-images.githubusercontent.com/38794784/137767965-3f635939-0902-4222-aa2e-164b5fbdbb23.png)
 
-The game is multiplayer, and players take turns clicking on cells. When someone wins, the board turns green, and nobody can click any more cells.
+The game is multiplayer, and players take turns clicking on cells, until someone wins.
 
-Main page, index.ejs: Choosing a game to join, or creating your own new one:
+Main page, index.ejs. Choose a game to join, or create a new one:
 
-![game2](https://user-images.githubusercontent.com/38794784/137586962-6cfd704f-9f62-46a5-9d92-a77cefabea72.PNG)
+![home](https://user-images.githubusercontent.com/38794784/137768129-9c147a28-0722-4a99-827a-86a67ae07a50.png)
 
-Implemented in two hours, for fun, and as practice. I have almost zero web-dev experience. But I want to work on this project more, and find ways to improve it until it's no longer crap-tier. 
+Originally implemented in two hours for fun, and as practice. I have almost zero web-dev experience. But I want to work on this project more, and find ways to improve it until it's no longer crap-tier. 
 
-Thanks for visiting,
-
-Leonard 
+Warm thanks to everyone that contributed so far!
