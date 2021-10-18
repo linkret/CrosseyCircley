@@ -12,7 +12,7 @@ Installation:
 - node index.js
 - Connect to the game on http://localhost:8000 from your browser.
 
-If you want to test it and play against yourself, open the game in two tabs. Create a new game from one tab, and join that tab from the other tab.
+If you want to test it and play against yourself, open the game in two tabs. Create a new game from one tab, and join the game from the other tab.
 
 Some pictures:
 
