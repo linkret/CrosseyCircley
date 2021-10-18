@@ -10,12 +10,19 @@ app.set('view engine', 'ejs');
 
 app.get('/game', (req, res) => {
 	let q = req.query;
-	
-	if (!game.getGame(q.game)) return res.send('Game not found<br><button onclick="location.href=\'/\'" type="button">Home</button>')
+	const gameData = game.getGame(q.game)
 
-	let data = Object.assign(game.getGame(q.game), {
+	if (!gameData) return res.send('Game not found<br><button onclick="location.href=\'/\'" type="button">Home</button>')
+
+	let boardColor
+	if (gameData.won == q.player) boardColor = 'green'
+	else if (gameData.won == -1) boardColor = 'grey'
+	else boardColor = 'red'
+
+	let data = Object.assign(gameData, {
 		player: q.player,
-		game: q.game
+		game: q.game,
+		boardColor
 	});
 
 	res.render('game', data);
