@@ -4,23 +4,25 @@ const app = express();
 const game = require('./lib/game')
 const port = 8000;
 
+let cur_game = 0
+
 app.set('view engine', 'ejs');
 
-cur_game = 0;
-game_data = {};
-
 app.get('/game', (req, res) => {
-	var q = req.query;
-	if (!game.getGame(q.game)) return res.send('Game not found')
-	var data = Object.assign(game.getGame(q.game), {
-		game: q.game,
-		player: q.player
+	let q = req.query;
+	
+	if (!game.getGame(q.game)) return res.send('Game not found<br><button onclick="location.href=\'/\'" type="button">Home</button>')
+
+	let data = Object.assign(game.getGame(q.game), {
+		player: q.player,
+		game: q.game
 	});
+
 	res.render('game', data);
 });
 
 app.get('/move', (req, res) => {
-	var q = req.query;
+	let q = req.query;
 
 	game.calculateLogic(q.game, q.player, q.i, q.j)
 
@@ -33,7 +35,7 @@ app.get('/', (req, res) => {
 	});
 });
 
-app.use('/new-game', (req, res, next) => {
+app.get('/new-game', (req, res, next) => {
 	newId = cur_game++;
 	game.createGame(newId)
 	res.redirect(`game/?game=${newId}&player=0`);
