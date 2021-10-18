@@ -12,45 +12,45 @@ app.set('view engine', 'ejs');
 app.use('/public', express.static('public'));
 
 app.get('/game', (req, res) => {
-	let q = req.query;
-	const gameData = game.getGame(q.game)
+    let q = req.query;
+    const gameData = game.getGame(q.game)
 
-	if (!gameData) return res.send('Game not found<br><button onclick="location.href=\'/\'" type="button">Home</button>')
+    if (!gameData)
+        return res.render('error', { error: 'Game not found' });
 
-	let boardColor
-	if (gameData.won == q.player) boardColor = '#6ec06e'
-	else if (gameData.won == -1) boardColor = '#c7c7c7'
-	else boardColor = '#ce5249'
+    let boardColor = '#c7c7c7';
+    if (gameData.won != -1)
+        boardColor = (gameData.won == q.player) ? '#6ec06e' : '#ce5249';
 
-	let data = Object.assign(gameData, {
-		player: q.player,
-		game: q.game,
-		boardColor
-	});
+    let data = Object.assign(gameData, {
+        player: q.player,
+        game: q.game,
+        boardColor
+    });
 
-	res.render('game', data);
+    res.render('game', data);
 });
 
 app.get('/move', (req, res) => {
-	let q = req.query;
+    let q = req.query;
 
-	game.calculateLogic(q.game, q.player, q.i, q.j)
+    game.calculateLogic(q.game, q.player, q.i, q.j)
 
-	res.redirect(`../game/?game=${q.game}&player=${q.player}`);
+    res.redirect(`../game/?game=${q.game}&player=${q.player}`);
 });
 
 app.get('/', (req, res) => {
-	res.render('index', {
-		games: Object.keys(game.getGames())
-	});
+    res.render('index', {
+        games: Object.keys(game.getGames())
+    });
 });
 
 app.get('/new-game', (req, res, next) => {
-	newId = cur_game++;
-	game.createGame(newId)
-	res.redirect(`game/?game=${newId}&player=0`);
+    newId = cur_game++;
+    game.createGame(newId)
+    res.redirect(`game/?game=${newId}&player=0`);
 });
 
 app.listen(port, () => {
-	console.log('Running...');
+    console.log('Running...');
 });
