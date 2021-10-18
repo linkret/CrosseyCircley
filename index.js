@@ -41,7 +41,7 @@ app.get('/move', (req, res) => {
 
 app.get('/', (req, res) => {
     res.render('index', {
-        games: Object.keys(game.getGames())
+        games: Object.keys(game.getGames()).filter(id => game.getGame(id).won == -1)
     });
 });
 
