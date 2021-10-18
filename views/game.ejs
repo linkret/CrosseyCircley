@@ -1,39 +1,35 @@
 <head>
-	
+	<link href= "/public/assets/game-style.css" rel="stylesheet" type="text/css" />
 <head>
 
 <body>
-<button onclick="location.href='/'" type="button">
-Home
-</button>
-
-<br>
-
-<div>
-<table>
-<% for (let i = 0; i < board.length; i++) { %>
-	<tr>
-	<% for (let j = 0; j < board[i].length; j++) { %>
-		<td>
-			<button 
-				onclick="location.href='../move/?game=<%-game%>&i=<%-i%>&j=<%-j%>&player=<%-player%>'" 
-				type="button" style="background-color: <%- boardColor %>; width: 100px; height: 100px">
-				
-				<span style="font-size: 50px;">
-					<% if (board[i][j] == 0) { %>
-						O
-					<% } else if (board[i][j] == 1) { %>
-						X
-					<% } %>
-				<span>
-			</button>
-		</td>
-	<% } %>
-	<tr>
-<% } %>
-</table>
-</div>
-
+	<div class="container">
+		<button onclick="location.href='/'" type="button" class="btn-back">
+			&#8249; Home
+		</button>
+		<table>
+		<% for (let i = 0; i < board.length; i++) { %>
+			<tr>
+			<% for (let j = 0; j < board[i].length; j++) { %>
+				<td>
+					<button 
+						onclick="location.href='../move/?game=<%-game%>&i=<%-i%>&j=<%-j%>&player=<%-player%>'" 
+						type="button" style="background-color: <%- boardColor %>;" class="board-tile">
+						
+						<span style="font-size: 50px;">
+							<% if (board[i][j] == 0) { %>
+								O
+							<% } else if (board[i][j] == 1) { %>
+								X
+							<% } %>
+						<span>
+					</button>
+				</td>
+			<% } %>
+			<tr>
+		<% } %>
+		</table>
+	</div>
 </body>
 
 <script>

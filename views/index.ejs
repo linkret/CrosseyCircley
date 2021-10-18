@@ -1,18 +1,22 @@
+<head>
+	<link href= "/public/assets/home-style.css" rel="stylesheet" type="text/css" />
+<head>
+
 <body>
-<button onclick="location.href='/new-game'" type="button">
-New Game
-</button>
-
-<br><br>
-
-<% for (let i of games) { %>
-	<div>
-		<button onclick="location.href='/game/?game=<%-i%>&player=1'" type="button">
-		Join game <%- i %>
+	<div class="container">
+		<span>tic-tac-toe</span>
+		<button onclick="location.href='/new-game'" type="button" class="btn btn-new-game">
+			New Game
 		</button>
+		
+		<% for (let i of games) { %>
+			<div>
+				<button onclick="location.href='/game/?game=<%-i%>&player=1'" type="button" class="btn btn-join-game">
+				Join game <%- i %>
+				</button>
+			</div>
+		<% } %>
 	</div>
-	<br>
-<% } %>
 </body>
 
 <script>
