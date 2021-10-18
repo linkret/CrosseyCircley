@@ -17,7 +17,7 @@ Home
 		<td>
 			<button 
 				onclick="location.href='../move/?game=<%-game%>&i=<%-i%>&j=<%-j%>&player=<%-player%>'" 
-				type="button" style="background-color: <%- (won == -1) ? 'grey' : 'green' %>; width: 100px; height: 100px">
+				type="button" style="background-color: <%- boardColor %>; width: 100px; height: 100px">
 				
 				<span style="font-size: 50px;">
 					<% if (board[i][j] == 0) { %>
