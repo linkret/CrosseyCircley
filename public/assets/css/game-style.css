@@ -39,3 +39,7 @@ table {
 img {
 	height: 100px;
 }
+
+.message-text {
+  font-family: monospace;
+}
