@@ -17,11 +17,19 @@ app.get('/game', (req, res) => {
 
     if (!gameData)
         return res.render('error', { error: 'Game not found' });
+    
+    if(gameData.turn.toString() === q.player){
+        gameData.message= "It's your turn!";
+    } else {
+        gameData.message = "It's the other player's turn!";
+    }
 
     let boardColor = '#c7c7c7';
-    if (gameData.won != -1)
+    if (gameData.won != -1) {
         boardColor = (gameData.won == q.player) ? '#6ec06e' : '#ce5249';
-
+        gameData.message = (gameData.won == q.player) ? 'You won!' : 'You lost!';
+    }
+        
     let data = Object.assign(gameData, {
         player: q.player,
         game: q.game,
