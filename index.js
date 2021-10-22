@@ -1,4 +1,6 @@
+const queryString = require('query-string')
 const express = require('express');
+const WebSocket = require('ws');
 const ejs = require('ejs');
 const app = express();
 const game = require('./lib/game')
@@ -29,7 +31,7 @@ app.get('/game', (req, res) => {
         boardColor = (gameData.won == q.player) ? '#6ec06e' : '#ce5249';
         gameData.message = (gameData.won == q.player) ? 'You won!' : 'You lost!';
     }
-        
+    
     let data = Object.assign(gameData, {
         player: q.player,
         game: q.game,
@@ -61,4 +63,33 @@ app.get('/new-game', (req, res, next) => {
 
 app.listen(port, () => {
     console.log('Running...');
+});
+
+const wsServer = new WebSocket.Server({
+    noServer: true,
+    path: '/ws',
+    port: 8001,
+});
+
+app.on("upgrade", (req, socket, head) => {
+
+    wsServer.handleUpgrade(req, socket, head, (ws) => {
+        wsServer.emit("connection", ws, req);
+    });
+});
+
+clients = {}
+
+wsServer.on("connection", (socket, req) => {
+    const [_path, _params] = req?.url?.split('?');
+    const params = queryString.parse(_params);
+
+    console.log(params);
+    clients[params.userID] = socket;
+
+    socket.on("message", (message) => {
+        const parsed = JSON.parse(message);
+        console.log("inside:", parsed);
+        clients[parsed.userID].send("heelo from the inside!\n");
+    });
 });
